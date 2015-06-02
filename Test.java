@@ -32,15 +32,15 @@ public static void main(String []args) throws IOException
 	 String fileType = Files.probeContentType(file.toPath());
 	 System.out.println(fileType);
 	
-	switch(fileType)
-	{
-	case "application/pdf" : new Test().parsePdf(PREFACE, RESULT);
+       	 switch(fileType)
+	 {
+	  case "application/pdf" : new Test().parsePdf(PREFACE, RESULT);
 	                         break;
-	case "application/msword" : parseDoc();
+	  case "application/msword" : parseDoc();
 	                            break;
-	case "application/vnd.openxmlformats-officedocument.wordprocessingml.document" : parseDocx();
+	  case "application/vnd.openxmlformats-officedocument.wordprocessingml.document" : parseDocx();
 	                                                                                 break;
-	}
+	 }
 }	
 
 public void parsePdf(String pdf, String txt) throws IOException 
@@ -61,12 +61,12 @@ public void parsePdf(String pdf, String txt) throws IOException
 }
 public static void parseDoc()
 {
-	POIFSFileSystem fs = null;
-     try {
+               	 POIFSFileSystem fs = null;
+        try {
 		 fs = new POIFSFileSystem(new FileInputStream(PREFACE));
 		 File file = new File("/home/rishi/Desktop/_Contents.doc");
-	     String fileType = Files.probeContentType(file.toPath());
-	     HWPFDocument doc = new HWPFDocument(fs);
+	         String fileType = Files.probeContentType(file.toPath());
+	         HWPFDocument doc = new HWPFDocument(fs);
 		 WordExtractor we = new WordExtractor(doc);
 		 String text = we.getText();
 	     File fil = new File("/home/rishi/Desktop/hello.txt");
@@ -74,7 +74,7 @@ public static void parseDoc()
 		 output.write(text);
 		 output.close();
 	} catch (Exception exep) {
-		System.out.println(exep);
+		 System.out.println(exep);
 	}
 }
 
@@ -88,12 +88,12 @@ public static void parseDocx(){
 		XWPFDocument doc = new XWPFDocument(fis);
 		XWPFWordExtractor ex = new XWPFWordExtractor(doc);
 		String text = ex.getText();
-	    File fil = new File("/home/rishi/Desktop/hello.txt");
-	    Writer output = new BufferedWriter(new FileWriter(fil));
-	    output.write(text);
-	    output.close();
+	        File fil = new File("/home/rishi/Desktop/hello.txt");
+	        Writer output = new BufferedWriter(new FileWriter(fil));
+	        output.write(text);
+	        output.close();
 	    } catch (Exception exep) {
-		 System.out.println(exep);
+		System.out.println(exep);
 	    }
     }
 }
