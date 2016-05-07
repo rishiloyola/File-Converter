@@ -1,4 +1,5 @@
 <h2>File-Converter</h2>
+To convert doc/docx/pdf to txt format.
 <br>
 Java code to convert doc/docx/pdf formated files to txt format. You can directly copy paste this code in eclipse/net-beans and run it.
 <br>
